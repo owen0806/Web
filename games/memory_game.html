@@ -69,6 +69,7 @@
         const cards = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
         const cardPairs = cards.concat(cards);
         let shuffledCards = shuffleArray(cardPairs);
+        let removed_cards = 0;
 
         const memoryGame = document.getElementById('memory-game');
 
@@ -104,6 +105,7 @@
 
                 if (flippedCards[0].dataset.card === flippedCards[1].dataset.card) {
                     // Match
+                    removed_cards += 2;
                     setTimeout(() => {
                         flippedCards.forEach(card => card.classList.add('removed'));
                         flippedCards = [];
@@ -116,6 +118,12 @@
                         flippedCards = [];
                         lockBoard = false;
                     }, 1000);
+                }
+                // Win
+                if(removed_cards >= 16){
+                    setTimeout(() => {
+                        window.alert('You win the game!!!');
+                    }, 1100);
                 }
             }
         }

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        #wheel-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: #ffbd72;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+            border: 20px solid #ffbd72;
+        }
+
+        #wheel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .wheel-section {
+            position: absolute;
+            width: 100px;
+            height: 50%;
+            clip-path: polygon(50% 100%, 0% 0%, 100% 0%);
+            transform-origin: 50% 100%;
+            text-align: center;
+            line-height: 100px;
+
+        }
+        .circle {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            clip-path: circle(20px at 150px 150px);
+            background-color: orange;
+        }
+        .pointer {
+            position: absolute;
+            top: 80px;
+            width: 70px;
+            height: 70px;
+            clip-path: polygon(50% 0, 30% 100%, 70% 100%);
+            background-color: orange;
+        }
+
+        .wheel-section:nth-child(1){
+            transform: rotateZ(45deg);
+        }
+        .wheel-section:nth-child(2){
+            transform: rotateZ(90deg);
+        }
+        .wheel-section:nth-child(3){
+            transform: rotateZ(135deg);
+        }
+        .wheel-section:nth-child(4){
+            transform: rotateZ(180deg);
+        }
+        .wheel-section:nth-child(5){
+            transform: rotateZ(225deg);
+        }
+        .wheel-section:nth-child(6){
+            transform: rotateZ(270deg);
+        }
+        .wheel-section:nth-child(7){
+            transform: rotateZ(315deg);
+        }
+        .wheel-section:nth-child(8){
+            transform: rotateZ(0deg);
+        }
+        
+        .wheel-section:nth-child(odd) {
+            background-color: #f7c894;
+        }
+        .wheel-section:nth-child(even) {
+            background-color: #ffebd4;
+        }
+
+        #spin-button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+    <title>抽獎轉盤遊戲</title>
+</head>
+<body>
+
+<div id="wheel-container">
+    <div id="wheel">
+        <div class="wheel-section" id="1">1</div>
+        <div class="wheel-section" id="2">2</div>
+        <div class="wheel-section" id="3">3</div>
+        <div class="wheel-section" id="4">4</div>
+        <div class="wheel-section" id="5">5</div>
+        <div class="wheel-section" id="6">6</div>
+        <div class="wheel-section" id="7">7</div>
+        <div class="wheel-section" id="8">8</div>
+    </div>
+    <div class="pointer"></div>
+    <div class="circle"></div>
+</div>
+
+<button id="spin-button">開始抽獎</button>
+
+<script>
+    const wheel = document.getElementById('wheel');
+    const spinButton = document.getElementById('spin-button');
+    var spinning = false, degSum = 0;
+    var num = 8, radius = 150;
+    var width = 0, deg = 360 / num, getItem = 0;
+
+    function start(){
+        compute_width();
+        spinButton.addEventListener('click', startSpan, false);
+    }
+    
+    function compute_width(){
+        const section = document.querySelectorAll('.wheel-section');
+
+        width = radius * 2 * Math.tan((deg / 2) * Math.PI / 180);
+        section.forEach(item => {
+            item.style.width = width + 'px';
+        });
+    }
+    
+    function startSpan(){
+        if (!spinning) {
+            const turns = 5;
+            degSum += Math.floor(Math.random() * 360) + 360 * turns;
+            spinning = true;
+
+            wheel.style.transition = 'transform 3s ease-out';
+            wheel.style.transform = `rotate(${degSum}deg)`;
+
+            setTimeout(() => {
+                wheel.style.transition = 'none';
+                spinning = false;
+                getItem = check();
+                window.alert('You are drawn ' + getItem);
+            }, 3000);
+        }
+    }
+
+    function check(){
+        const remainDeg = degSum % 360;
+        if(remainDeg <= 22.5) return 8;
+        else if(remainDeg < 67.5) return 7;
+        else if(remainDeg < 112.5) return 6;
+        else if(remainDeg < 157.5) return 5;
+        else if(remainDeg < 202.5) return 4;
+        else if(remainDeg < 247.5) return 3;
+        else if(remainDeg < 292.5) return 2;
+        else if(remainDeg < 337.5) return 1;
+        else return 8;
+    }
+
+    window.addEventListener('load', start, false);
+</script>
+
+</body>
+</html>
