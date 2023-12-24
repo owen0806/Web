@@ -88,10 +88,15 @@
         }
 
         #spin-button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            clip-path: circle(15px at 150px 150px);
             cursor: pointer;
+            background-color: red;
+        }
+        #spin-button:hover{
+            transform: scale(1.1);
         }
     </style>
     <title>抽獎轉盤遊戲</title>
@@ -111,9 +116,8 @@
     </div>
     <div class="pointer"></div>
     <div class="circle"></div>
+    <div id="spin-button"></div>
 </div>
-
-<button id="spin-button">開始抽獎</button>
 
 <script>
     const wheel = document.getElementById('wheel');
