@@ -1,0 +1,106 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+#startButton {
+    font-size: 24px;
+    padding: 10px 20px;
+    border-color: black;
+    border-width: 10px;
+    background-color: gray;
+    margin-top: 200px;
+    position: absolute;
+    cursor: pointer;
+}
+#gameButton1 {
+    font-size: 24px;
+    padding: 10px 20px;
+    border-color: black;
+    border-width: 10px;
+    background-color: gray;
+    margin-top: 200px;
+    position: absolute;
+    cursor: pointer;
+    display: none;
+    margin-left: 450px;
+    margin-top: 450px;
+}
+#gameButton2 {
+    font-size: 24px;
+    padding: 10px 20px;
+    border-color: black;
+    border-width: 10px;
+    background-color: gray;
+    margin-top: 200px;
+    position: absolute;
+    cursor: pointer;
+    display: none;
+    margin-left: 950px;
+    margin-top: 450px;
+}
+#mailButton1 {
+    font-size: 10px;
+    padding: 10px 20px;
+    border-color: black;
+    border-width: 10px;
+    background-color: gray;
+    position: relative;
+    cursor: pointer;
+    margin-top: 350px;
+}
+
+#mazeContainer {
+    display: none;
+}
+#maze {
+    display: grid;
+    grid-template-columns: repeat(15, 40px);
+    grid-template-rows: repeat(15, 40px);
+    gap: 0;
+    background-color: #fff;
+    border: 10px solid #fff; 
+    box-sizing: border-box; 
+    margin-top: 60px;
+    margin-right: 700px;
+}
+
+.cell {
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border: 7px solid black;
+}
+
+.wall {
+    background-color: gray;
+}
+.start {
+    background-color: #0f0;
+}
+.end {
+    background-color: #f00;
+}
+.player {
+    background-color: #00f;
+}
+.cell.selected {
+    background-color: yellow;
+}
+
+#timer {
+    text-align: center;
+    font-size: 35px;
+    margin-top: 50px;
+}
+#gradientCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; 
+    background: radial-gradient(circle at center, #ffffff,black);
+}
