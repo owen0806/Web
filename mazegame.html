@@ -518,10 +518,13 @@
               const currentCell = document.getElementById('maze').children[currentCellIndex];
 
               if (currentCell.classList.contains('selected')) {
+                
                 alert("You passed a yellow cell! Spin the wheel!");
+                
               }
 
-              checkWin();
+              checkWin(); 
+            }
           }
 
           function startTimer() {
