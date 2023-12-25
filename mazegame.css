@@ -6,7 +6,7 @@ body {
     margin: 0;
 }
 #startButton {
-    font-size: 24px;
+    font-size: 40px;
     padding: 10px 20px;
     border-color: black;
     border-width: 10px;
@@ -14,42 +14,16 @@ body {
     margin-top: 200px;
     position: absolute;
     cursor: pointer;
-}
-#gameButton1 {
-    font-size: 24px;
-    padding: 10px 20px;
-    border-color: black;
-    border-width: 10px;
-    background-color: gray;
-    margin-top: 200px;
-    position: absolute;
-    cursor: pointer;
-    display: none;
-    margin-left: 450px;
-    margin-top: 450px;
-}
-#gameButton2 {
-    font-size: 24px;
-    padding: 10px 20px;
-    border-color: black;
-    border-width: 10px;
-    background-color: gray;
-    margin-top: 200px;
-    position: absolute;
-    cursor: pointer;
-    display: none;
-    margin-left: 950px;
-    margin-top: 450px;
 }
 #mailButton1 {
-    font-size: 10px;
+    font-size: 20px;
     padding: 10px 20px;
     border-color: black;
     border-width: 10px;
     background-color: gray;
     position: relative;
     cursor: pointer;
-    margin-top: 350px;
+    margin-top: 400px;
 }
 
 #mazeContainer {

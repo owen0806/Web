@@ -80,6 +80,7 @@ function revealCell(x, y) {
       alert('Congratulations! You found all the mines. You win!');
       const boardElement = document.getElementById('board');
       boardElement.innerHTML = '';
+      mazeContainer.style.display = "block";
     }
   }
 }
@@ -89,7 +90,7 @@ function flagCell(x, y) {
     return;
   }
 
-  const cell = document.getElementById(`cell-${x}-${y}`);
+  const cell = document.getElementById(`cells-${x}-${y}`);
   board[x][y].isFlagged = !board[x][y].isFlagged;
 
   if (board[x][y].isFlagged) {
@@ -109,7 +110,7 @@ function renderBoard() {
     for (let y = 0; y < boardSize; y++) {
       const cell = document.createElement('div');
       cell.id = `cell-${x}-${y}`;
-      cell.classList.add('cell', 'hidden');
+      cell.classList.add('cells', 'hidden');
       cell.addEventListener('click', () => revealCell(x, y));
       cell.addEventListener('contextmenu', (e) => {
         e.preventDefault();

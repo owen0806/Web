@@ -17,11 +17,6 @@ var wheeltext = '<div id="wheel-container">\
                     <div id="spin-button"></div>\
                 </div>';
 
-function start(){
-    const showbtn = document.getElementById('showbtn');
-    showbtn.addEventListener('click', show_wheel, false);
-}
-
 function show_wheel(){
     document.getElementById('text').innerHTML = wheeltext;
     const wheel = document.getElementById('wheel');
@@ -56,6 +51,7 @@ function startSpan(){
             document.getElementById('text').innerHTML = '';
             if(getItem == 1 || getItem == 5) show_minesweeper();
             else if(getItem == 3 || getItem == 7) show_memoryGame();
+            else mazeContainer.style.display = "block";
         }, 3000);
     }
 }

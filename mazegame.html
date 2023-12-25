@@ -4,7 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maze</title>
+
   <link rel="stylesheet" href="mazegame.css">
+  <link rel="stylesheet" href="games/memory_game.css">
+  <script src="games/memory_game.js"></script>
+  <link rel="stylesheet" href="games/minesweeper.css">
+  <script src="games/minesweeper.js"></script>
+  <link rel="stylesheet" href="lottery/lottery_wheel.css">
+  <script src="lottery/lottery_wheel.js"></script>
 </head>
 <body>
   <form method="post" action="mailto:a0908715077@gmail.com"><button id="mailButton1">Contact Author</button></form>
@@ -14,6 +21,8 @@
     <div id="timer">Time: 0 s</div>
     <div id="maze"></div>
   </div>
+  <div id="text"></div>
+  <div id="game"></div>
   
   <script>
       document.addEventListener("DOMContentLoaded", function () {
@@ -234,9 +243,9 @@
               const currentCell = document.getElementById('maze').children[currentCellIndex];
 
               if (currentCell.classList.contains('selected')) {
-                
                 alert("You passed a yellow cell! Spin the wheel!");
-                
+                mazeContainer.style.display = "none";
+                show_wheel();
               }
 
               checkWin(); 
