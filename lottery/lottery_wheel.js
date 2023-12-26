@@ -4,13 +4,13 @@ var width = 0, deg = 360 / num, getItem = 0;
 var wheeltext = '<div id="wheel-container">\
                     <div id="wheel">\
                     <div class="wheel-section" id="1">隨機遊戲</div>\
-                    <div class="wheel-section" id="2">暫停5秒</div>\
+                    <div class="wheel-section" id="2">任意傳送</div>\
                     <div class="wheel-section" id="3">隨機遊戲</div>\
-                    <div class="wheel-section" id="4">時間歸零</div>\
+                    <div class="wheel-section" id="4">任意傳送</div>\
                     <div class="wheel-section" id="5">隨機遊戲</div>\
-                    <div class="wheel-section" id="6">返回起點</div>\
+                    <div class="wheel-section" id="6">任意傳送</div>\
                     <div class="wheel-section" id="7">隨機遊戲</div>\
-                    <div class="wheel-section" id="8">暫停3秒</div>\
+                    <div class="wheel-section" id="8">任意傳送</div>\
                 </div>\
                     <div class="pointer"></div>\
                     <div class="circle"></div>\
@@ -34,7 +34,7 @@ function compute_width(){
     });
 }
 
-function startSpan(){
+function startSpan() {
     if (!spinning) {
         const turns = 5;
         degSum += Math.floor(Math.random() * 360) + 360 * turns;
@@ -47,11 +47,20 @@ function startSpan(){
             wheel.style.transition = 'none';
             spinning = false;
             getItem = check();
-            window.alert('You are drawn ' + getItem);
             document.getElementById('text').innerHTML = '';
-            if(getItem == 1 || getItem == 5) show_minesweeper();
-            else if(getItem == 3 || getItem == 7) show_memoryGame();
-            else mazeContainer.style.display = "block";
+
+            if (getItem == 1 || getItem == 5) {
+                window.alert("踩地雷遊戲");
+                show_minesweeper();
+            } else if (getItem == 3 || getItem == 7) {
+                window.alert("卡牌配對記憶遊戲");
+                show_memoryGame();
+            } else if (getItem == 2 || getItem == 4 || getItem == 6 || getItem == 8) {
+                window.alert("任意傳送");
+                mazeContainer.style.display = "block";
+
+            }
+
         }, 3000);
     }
 }
@@ -70,13 +79,20 @@ function check(){
 }
 
 function show_memoryGame(){
-    document.getElementById('game').innerHTML = '<div id="memory-game"></div>';
+    game.innerHTML = '<div id="memory-game"></div>';
+    game.style.display = 'block';
     start_memoryGame();
 }
 
 function show_minesweeper(){
-    document.getElementById('game').innerHTML = '<div id="board"></div>';
+    game.innerHTML = '<div id="board"></div>';
+    game.style.display = 'block';
     start_minesweeper();
 }
 
+function teleportPlayerToStart() {
+              
+    mazeContainer.style.display = "block";
+}
 window.addEventListener('load', start, false);
+

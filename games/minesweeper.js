@@ -80,7 +80,8 @@ function revealCell(x, y) {
       alert('Congratulations! You found all the mines. You win!');
       const boardElement = document.getElementById('board');
       boardElement.innerHTML = '';
-      mazeContainer.style.display = "block";
+      mazeContainer.style.display = "flex";
+      game.style.display = 'none';
     }
   }
 }

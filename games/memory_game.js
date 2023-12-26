@@ -56,7 +56,8 @@ function start_memoryGame(){
             if(removed_cards >= 16){
                 setTimeout(() => {
                     window.alert('You win the game!!!');
-                    mazeContainer.style.display = "block";
+                    mazeContainer.style.display = "flex";
+                    game.style.display = 'none';
                 }, 1100);
             }
         }
