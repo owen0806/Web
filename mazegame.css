@@ -125,7 +125,7 @@ body {
     font-weight: bold;
     color: #fff;
     display: inline-block;
-    border-radius: 20px; /* 或适当的数值 */
+    border-radius: 20px;
     padding: 20px;
     background: linear-gradient(to bottom, #000, #fff);
     animation: bounce 1.75s infinite;

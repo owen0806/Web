@@ -207,7 +207,6 @@ function start_game(){
           playerPosition.row = newRow;
           playerPosition.col = newCol;
           updatePlayerPosition();
-
           
           const currentCellIndex = playerPosition.row * 15 + playerPosition.col;
           const currentCell = document.getElementById('maze').children[currentCellIndex];
