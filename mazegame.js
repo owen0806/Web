@@ -114,23 +114,6 @@ const mazeStructure = Array.from({ length: 15 }, () => Array(15).fill(0));
       mazeStructure[13][13] = 1;
       mazeStructure[13][14] = 1;
 
-function start_game(){
-    const mazeContainer = document.getElementById("mazeContainer");
-    const startButton = document.getElementById("startButton");
-    const mailButton1 = document.getElementById("mailButton1");
-    const titleContainer = document.getElementById("titleContainer");
-    const game = document.getElementById('game');
-    startButton.addEventListener("click", function () {
-      startButton.style.display = "none";
-      mailButton1.style.display = "none";
-      mazeContainer.style.display = "block";
-      titleContainer.style.display = "none";
-      const maze = document.getElementById("maze");
-      const timerElement = document.getElementById("timer");
-      let startTime;
-      let endTime;
-      let timerInterval;
-      
       function createMaze() {
         const walkableCells = [];
 
@@ -195,6 +178,26 @@ function start_game(){
           return false;
         }
       }
+
+function start_game(){
+    createMaze();
+    const mazeContainer = document.getElementById("mazeContainer");
+    const startButton = document.getElementById("startButton");
+    const mailButton1 = document.getElementById("mailButton1");
+    const titleContainer = document.getElementById("titleContainer");
+    const quitButton = document.getElementById('quitButton');
+    const game = document.getElementById('game');
+    startButton.addEventListener("click", function () {
+      startButton.style.display = "none";
+      mailButton1.style.display = "none";
+      titleContainer.style.display = "none";
+      mazeContainer.style.display = "block";
+      quitButton.style.display = "block";
+      const maze = document.getElementById("maze");
+      const timerElement = document.getElementById("timer");
+      let startTime;
+      let endTime;
+      let timerInterval;
       
       function movePlayer(direction) {
         const newRow = playerPosition.row + (direction === "ArrowDown" ? 1 : direction === "ArrowUp" ? -1 : 0);
@@ -212,7 +215,7 @@ function start_game(){
           if (currentCell.classList.contains('selected')) {
             alert("You passed a yellow cell! Spin the wheel!");
             mazeContainer.style.display = "none";
-
+            currentCell.classList.remove("selected");
             show_wheel();
           }
 
@@ -255,13 +258,17 @@ function start_game(){
         }
       }
 
+      quitButton.addEventListener('click', resetGame, false);
       function resetGame() {
         playerPosition = { row: startPosition.row, col: startPosition.col };
         updatePlayerPosition();
         resetTimer();
+        startButton.style.display = "block";
+        mailButton1.style.display = "block";
+        titleContainer.style.display = "block";
+        mazeContainer.style.display = "none";
+        quitButton.style.display = "none";
       }
-
-      createMaze();
 
       document.addEventListener("keydown", function (event) {
         const arrowKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];

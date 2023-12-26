@@ -25,6 +25,19 @@ body {
     cursor: pointer;
     margin-top: 400px;
 }
+#quitButton {
+    font-size: 40px;
+    padding: 10px 20px;
+    border-color: black;
+    border-width: 10px;
+    background-color: gray;
+    margin-top: 0px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    cursor: pointer;
+    display: none;
+}
 
 #mazeContainer {
     display: none;

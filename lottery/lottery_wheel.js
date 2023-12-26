@@ -57,12 +57,12 @@ function startSpan() {
                 show_memoryGame();
             } else if (getItem == 2 || getItem == 4 || getItem == 6) {
                 window.alert("任意傳送");
-                mazeContainer.style.display = "block";
                 goto_randomPos();
+                mazeContainer.style.display = "block";
             } else if(getItem == 8) {
                 window.alert("回到起點");
-                mazeContainer.style.display = "block";
                 goto_start();
+                mazeContainer.style.display = "block";
             }
 
         }, 3000);
