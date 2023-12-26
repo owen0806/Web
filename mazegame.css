@@ -106,7 +106,7 @@ body {
     }
   }
   
-  #mazeTitle {
+#mazeTitle {
     font-family: 'Arial', sans-serif;
     font-size: 120px;
     font-weight: bold;
@@ -116,7 +116,7 @@ body {
     padding: 20px;
     background: linear-gradient(to bottom, #000, #fff);
     animation: bounce 1.75s infinite;
-  }
+}
   
   
   

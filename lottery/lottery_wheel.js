@@ -10,7 +10,7 @@ var wheeltext = '<div id="wheel-container">\
                     <div class="wheel-section" id="5">隨機遊戲</div>\
                     <div class="wheel-section" id="6">任意傳送</div>\
                     <div class="wheel-section" id="7">隨機遊戲</div>\
-                    <div class="wheel-section" id="8">任意傳送</div>\
+                    <div class="wheel-section" id="8">回到起點</div>\
                 </div>\
                     <div class="pointer"></div>\
                     <div class="circle"></div>\
@@ -55,10 +55,14 @@ function startSpan() {
             } else if (getItem == 3 || getItem == 7) {
                 window.alert("卡牌配對記憶遊戲");
                 show_memoryGame();
-            } else if (getItem == 2 || getItem == 4 || getItem == 6 || getItem == 8) {
+            } else if (getItem == 2 || getItem == 4 || getItem == 6) {
                 window.alert("任意傳送");
                 mazeContainer.style.display = "block";
-
+                get_random_pos();
+            } else if(getItem == 8) {
+                window.alert("回到起點");
+                mazeContainer.style.display = "block";
+                to_start();
             }
 
         }, 3000);
@@ -90,9 +94,28 @@ function show_minesweeper(){
     start_minesweeper();
 }
 
-function teleportPlayerToStart() {
-              
-    mazeContainer.style.display = "block";
+function to_start() {
+    var newRow = 0, newCol = 0;
+    playerPosition.row = newRow;
+    playerPosition.col = newCol;
+    updatePlayerPosition();
 }
-window.addEventListener('load', start, false);
 
+function get_random_pos() {
+    var newRow, newCol;
+    do{
+      newRow = Math.floor(Math.random() * 15);
+      newCol = Math.floor(Math.random() * 15);
+    }while(mazeStructure[newRow][newCol] == 1);
+    playerPosition.row = newRow;
+    playerPosition.col = newCol;
+    updatePlayerPosition();
+}
+
+function updatePlayerPosition() {
+    const cells = document.querySelectorAll(".cell");
+    cells.forEach((cell) => cell.classList.remove("player"));
+
+    const playerCellIndex = playerPosition.row * 15 + playerPosition.col;
+    cells[playerCellIndex].classList.add("player");
+}
