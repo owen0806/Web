@@ -186,13 +186,27 @@ function start_game(){
     const mailButton1 = document.getElementById("mailButton1");
     const titleContainer = document.getElementById("titleContainer");
     const quitButton = document.getElementById('quitButton');
+    const ppt = document.getElementById("ppt");
+    const help = document.getElementById('help');
     const game = document.getElementById('game');
+    const helpButton = document.getElementById('helpButton');
+
+    help.addEventListener("click", function () {
+        if (helpButton.style.display === "none" || helpButton.style.display === "") {
+            helpButton.style.display = "block";
+        } else {
+            helpButton.style.display = "none";
+        }
+    });
     startButton.addEventListener("click", function () {
       startButton.style.display = "none";
       mailButton1.style.display = "none";
+      ppt.style.display = "none";
+      help.style.display = "none";
       titleContainer.style.display = "none";
       mazeContainer.style.display = "block";
       quitButton.style.display = "block";
+
       const maze = document.getElementById("maze");
       const timerElement = document.getElementById("timer");
       let startTime;
@@ -267,6 +281,8 @@ function start_game(){
         titleContainer.style.display = "block";
         mazeContainer.style.display = "none";
         quitButton.style.display = "none";
+        ppt.style.display = "block";
+        help.style.display = "block";
       }
 
       document.addEventListener("keydown", function (event) {

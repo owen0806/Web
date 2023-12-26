@@ -12,11 +12,12 @@ body {
     border-width: 10px;
     background-color: gray;
     margin-top: 200px;
+    width: 400px;width: 400px;
     position: absolute;
     cursor: pointer;
 }
 #mailButton1 {
-    font-size: 20px;
+    font-size: 40px;
     padding: 10px 20px;
     border-color: black;
     border-width: 10px;
@@ -24,6 +25,7 @@ body {
     position: relative;
     cursor: pointer;
     margin-top: 400px;
+    width: 400px;
 }
 #quitButton {
     font-size: 40px;
@@ -37,6 +39,20 @@ body {
     position: absolute;
     cursor: pointer;
     display: none;
+}
+#help {
+    font-size: 40px;
+    padding: 10px 20px;
+    border-color: black;
+    border-width: 10px;
+    background-color: gray;
+    margin-top: 600px;
+    position: absolute;
+    cursor: pointer;
+    width: 400px;
+}
+button:hover{
+    transform: scale(1.1);
 }
 
 #mazeContainer {
@@ -131,6 +147,25 @@ body {
     animation: bounce 1.75s infinite;
 }
   
-  
+#ppt {
+    font-size: 20px;
+    padding: 10px 20px;
+    border-color: black;
+    border-width: 10px;
+    background-color: gray;
+    margin-top: 0px;
+    left: 0px;
+    top: 0px;
+    position: absolute;
+    cursor: pointer;
+}
   
 
+#helpButton{
+    font-size: 25px;
+    margin-top: 0px;
+    left: 100px;
+    top: 200px;
+    position: absolute;
+    display: none;
+}
