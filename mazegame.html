@@ -4,9 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Maze</title>
+
   <link rel="stylesheet" href="mazegame.css">
+  <link rel="stylesheet" href="games/memory_game.css">
+  <script src="games/memory_game.js"></script>
+  <link rel="stylesheet" href="games/minesweeper.css">
+  <script src="games/minesweeper.js"></script>
+  <link rel="stylesheet" href="lottery/lottery_wheel.css">
+  <script src="lottery/lottery_wheel.js"></script>
 </head>
 <body>
+  <div id="titleContainer">
+    <div id="mazeTitle">Maze Game</div>
+  </div>
+  
   <form method="post" action="mailto:a0908715077@gmail.com"><button id="mailButton1">Contact Author</button></form>
   <button id="startButton">Start Game</button>
   <canvas id="gradientCanvas"></canvas>
@@ -14,17 +25,21 @@
     <div id="timer">Time: 0 s</div>
     <div id="maze"></div>
   </div>
+  <div id="text"></div>
+  <div id="game"></div>
   
   <script>
       document.addEventListener("DOMContentLoaded", function () {
         const mazeContainer = document.getElementById("mazeContainer");
         const startButton = document.getElementById("startButton");
         const mailButton1 = document.getElementById("mailButton1");
+        const titleContainer = document.getElementById("titleContainer");
+        const game = document.getElementById('game');
         startButton.addEventListener("click", function () {
           startButton.style.display = "none";
           mailButton1.style.display = "none";
           mazeContainer.style.display = "block";
-          
+          titleContainer.style.display = "none";
           const maze = document.getElementById("maze");
           const timerElement = document.getElementById("timer");
           let playerPosition = { row: 0, col: 0 };
@@ -49,7 +64,6 @@
           mazeStructure[3][6] = 1;
           mazeStructure[4][6] = 1;
           mazeStructure[5][6] = 1;
-          mazeStructure[5][7] = 1; 
           mazeStructure[5][8] = 1;
           mazeStructure[5][9] = 1;
           mazeStructure[1][10] = 1;
@@ -129,7 +143,6 @@
           mazeStructure[9][1] = 1;
           mazeStructure[10][1] = 1;
           mazeStructure[11][1] = 1;
-          mazeStructure[12][1] = 1;
           mazeStructure[13][1] = 1;
           mazeStructure[13][0] = 1;
           mazeStructure[11][3] = 1;
@@ -181,7 +194,7 @@
 
             const selectedCells = [];
 
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 6; i++) {
               let randomIndex, randomCell;
 
               do {
@@ -220,6 +233,9 @@
             const playerCellIndex = playerPosition.row * 15 + playerPosition.col;
             cells[playerCellIndex].classList.add("player");
           }
+
+
+          
           function movePlayer(direction) {
             const newRow = playerPosition.row + (direction === "ArrowDown" ? 1 : direction === "ArrowUp" ? -1 : 0);
             const newCol = playerPosition.col + (direction === "ArrowRight" ? 1 : direction === "ArrowLeft" ? -1 : 0);
@@ -234,14 +250,16 @@
               const currentCell = document.getElementById('maze').children[currentCellIndex];
 
               if (currentCell.classList.contains('selected')) {
-                
                 alert("You passed a yellow cell! Spin the wheel!");
                 mazeContainer.style.display = "none";
+
+                show_wheel();
               }
 
               checkWin(); 
             }
           }
+
 
           function startTimer() {
             startTime = new Date();
