@@ -91,7 +91,7 @@ function flagCell(x, y) {
     return;
   }
 
-  const cell = document.getElementById(`cells-${x}-${y}`);
+  const cell = document.getElementById(`cell-${x}-${y}`);
   board[x][y].isFlagged = !board[x][y].isFlagged;
 
   if (board[x][y].isFlagged) {

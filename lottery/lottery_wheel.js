@@ -58,11 +58,11 @@ function startSpan() {
             } else if (getItem == 2 || getItem == 4 || getItem == 6) {
                 window.alert("任意傳送");
                 mazeContainer.style.display = "block";
-                get_random_pos();
+                goto_randomPos();
             } else if(getItem == 8) {
                 window.alert("回到起點");
                 mazeContainer.style.display = "block";
-                to_start();
+                goto_start();
             }
 
         }, 3000);
@@ -94,14 +94,14 @@ function show_minesweeper(){
     start_minesweeper();
 }
 
-function to_start() {
+function goto_start() {
     var newRow = 0, newCol = 0;
     playerPosition.row = newRow;
     playerPosition.col = newCol;
     updatePlayerPosition();
 }
 
-function get_random_pos() {
+function goto_randomPos() {
     var newRow, newCol;
     do{
       newRow = Math.floor(Math.random() * 15);
