@@ -15,8 +15,8 @@ body {
 }
 
 .card {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     position: relative;
     transform-style: preserve-3d;
     transform-origin: center;
@@ -30,7 +30,7 @@ body {
 }
 
 .card.flip .card-face {
-    font-size: 24px;
+    font-size: 50px;
 }
 
 .card.flip.removed .card-face{

@@ -18,11 +18,19 @@ var wheeltext = '<div id="wheel-container">\
                 </div>';
 
 function show_wheel(){
-    document.getElementById('text').innerHTML = wheeltext;
+    text.innerHTML = wheeltext;
+    text.style.display = "block";
     const wheel = document.getElementById('wheel');
     const spinButton = document.getElementById('spin-button');
     compute_width();
     spinButton.addEventListener('click', startSpan, false);
+    document.addEventListener("keydown", keyDown, false);
+}
+
+function keyDown(event) {
+    if(event.keyCode == 13){
+        startSpan();
+    }
 }
 
 function compute_width(){

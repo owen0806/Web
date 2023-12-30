@@ -188,8 +188,9 @@ function start_game(){
     const quitButton = document.getElementById('quitButton');
     const ppt = document.getElementById("ppt");
     const help = document.getElementById('help');
-    const game = document.getElementById('game');
     const helpButton = document.getElementById('helpButton');
+    const game = document.getElementById('game');
+    const text = document.getElementById('text');
 
     help.addEventListener("click", function () {
         if (helpButton.style.display === "none" || helpButton.style.display === "") {
@@ -265,7 +266,7 @@ function start_game(){
         if (playerPosition.row === endPosition.row && playerPosition.col === endPosition.col) {
           stopTimer();
           setTimeout(() => {
-            alert("You won!\nTotal time: " + timerElement.textContent);
+            alert("You Win!\nTotal time: " + timerElement.textContent);
             resetGame();
           }, 100);
         }
@@ -283,9 +284,15 @@ function start_game(){
         quitButton.style.display = "none";
         ppt.style.display = "block";
         help.style.display = "block";
+        game.style.display = "none";
+        text.innerHTML = "";
+        text.style.display = "none";
+        document.removeEventListener("keydown", keymove, false);
       }
 
-      document.addEventListener("keydown", function (event) {
+      document.addEventListener("keydown", keymove, false);
+      
+      function keymove(event) {
         const arrowKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
         if (arrowKeys.includes(event.key)) {
           if (startTime === undefined && mazeStructure[startPosition.row][startPosition.col] !== 1) {
@@ -293,7 +300,7 @@ function start_game(){
           }
           movePlayer(event.key);
         }
-      });
+      }
     });
 }
 window.addEventListener('load', start_game, false);
