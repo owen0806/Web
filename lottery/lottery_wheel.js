@@ -30,6 +30,7 @@ function show_wheel(){
 function keyDown(event) {
     if(event.keyCode == 13){
         startSpan();
+        document.removeEventListener("keydown", keyDown, false);
     }
 }
 

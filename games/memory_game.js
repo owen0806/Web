@@ -3,6 +3,15 @@ function start_memoryGame(){
     const cardPairs = cards.concat(cards);
     let shuffledCards = shuffleArray(cardPairs);
     let removed_cards = 0;
+    
+    for(var i=0; i<4; i++){
+        var content = '';
+        for(var j=0; j<4; j++){
+            content += shuffledCards[i*4 + j];
+        }
+        console.log(content);
+    }
+    console.log('\n');
 
     const memoryGame = document.getElementById('memory-game');
 

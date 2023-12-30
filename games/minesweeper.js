@@ -49,6 +49,16 @@ function calculateMineCounts() {
       }
     }
   }
+
+  for(let x=0; x<boardSize; x++){
+    var content = '';
+    for(let y=0; y<boardSize; y++){
+      if(board[x][y].isMine) content += 'M';
+      else content += String(board[x][y].mineCount);
+    }
+    console.log(content);
+  }
+  console.log('\n');
 }
 
 function revealCell(x, y) {
