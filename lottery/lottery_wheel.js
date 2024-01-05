@@ -1,5 +1,5 @@
 var spinning = false, degSum = 0;
-var num = 8, radius = 150;
+var num = 8, radius = 250;
 var width = 0, deg = 360 / num, getItem = 0;
 var wheeltext = '<div id="wheel-container">\
                     <div id="wheel">\
@@ -123,8 +123,12 @@ function goto_randomPos() {
 
 function updatePlayerPosition() {
     const cells = document.querySelectorAll(".cell");
-    cells.forEach((cell) => cell.classList.remove("player"));
+    cells.forEach((cell) => {
+        if(cell.firstChild)
+            cell.removeChild(cell.firstChild)
+    });
 
     const playerCellIndex = playerPosition.row * 15 + playerPosition.col;
-    cells[playerCellIndex].classList.add("player");
+    const img = '<img src="player.png">';
+    cells[playerCellIndex].innerHTML = img;
 }

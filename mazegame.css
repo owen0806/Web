@@ -5,6 +5,10 @@ body {
     height: 100vh;
     margin: 0;
 }
+img{
+    width: 40px;
+    height: 40px;
+}
 #startButton {
     font-size: 40px;
     padding: 10px 20px;
@@ -82,9 +86,6 @@ button:hover{
 }
 .end {
     background-color: #f00;
-}
-.player {
-    background-color: #00f;
 }
 .cell.selected {
     border-radius: 50%;
